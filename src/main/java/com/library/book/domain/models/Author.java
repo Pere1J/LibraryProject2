@@ -1,26 +1,18 @@
 package com.library.book.domain.models;
 
-
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.util.UUID;
-
 @Entity
-@Table(name="books")
+@Table(name="authors")
 @Data
-public class Book {
+
+public class Author {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
-    private String title;
-    private boolean isLoaned;
-    private String coverUrl;
-    @ManyToOne
-    @JoinColumn(name = "author_id")
-    private Author author;
-
-
+    private String name;
+    private String nacionalidad;
 
 }

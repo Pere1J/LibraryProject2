@@ -1,6 +1,22 @@
+
+
+
+
+  INSERT
+INTO
+  authors
+  (name, nacionalidad)
+VALUES
+  ('Miguel de Cervantes', 'España');
 INSERT
 INTO
   books
-  (title, uuid, is_loaned, author, cover_url)
+  (title, is_loaned, cover_url, author_id)
 VALUES
-  ('El Quijote', '6df147fb-5a98-4b5f-a7ba-7501e51d1f15', FALSE, 'Miguel de Cervantes', 'quijote.jpg');
+  ('El Quijote', FALSE, 'quijote.jpg', 1);
+INSERT
+INTO
+    books
+    (title, is_loaned, cover_url, author_id)
+VALUES
+    ('Novelas ejemplares', FALSE, 'novelas.jpg', 1);
