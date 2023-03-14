@@ -3,14 +3,14 @@ package com.library.book.apiService.controllers;
 import com.library.book.domain.models.Book;
 import com.library.book.domain.services.BookService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@CrossOrigin("*")
+@CrossOrigin(origins = "http://localhost:3000")
+
+@RequestMapping
 
 public class BookController {
     private final BookService bookService;
@@ -23,6 +23,12 @@ public class BookController {
     @GetMapping("/books")
    ResponseEntity<List<Book>> getAll(){
        return ResponseEntity.ok(this.bookService.findAll());
+
+    }
+
+    @GetMapping("/books/{id}")
+    ResponseEntity<Book> getById(@PathVariable Long id){
+        return ResponseEntity.ok(this.bookService.getById(id));
 
     }
 }
