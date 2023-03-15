@@ -15,7 +15,7 @@ public class Book {
     private String title;
     private boolean isLoaned;
     private String coverUrl;
-    @ManyToOne
+    @ManyToOne(cascade= CascadeType.PERSIST)
     @JoinColumn(name = "author_id")
     private Author author;
 
