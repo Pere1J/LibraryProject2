@@ -19,5 +19,11 @@ public class BookService {
         return this.bookRepository.findAll();
     }
 
-    public Book getById(Long id) {return this.bookRepository.findById(id).get();}
+    public Book getById(Long id) {
+        //return this.bookRepository.findById(id).get();
+    var bookOptional = this.bookRepository.findById(id);
+    //no existe
+    if (bookOptional.isEmpty()) throw new RuntimeException("Libro no encontrado");
+    return bookOptional.get();
+    }
 }

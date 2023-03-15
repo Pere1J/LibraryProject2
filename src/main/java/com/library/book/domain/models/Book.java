@@ -4,8 +4,6 @@ package com.library.book.domain.models;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.util.UUID;
-
 @Entity
 @Table(name="books")
 @Data
