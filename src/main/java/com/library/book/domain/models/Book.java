@@ -13,7 +13,7 @@ public class Book {
     @Column(name = "id", nullable = false)
     private Long id;
     private String title;
-    private boolean isLoaned;
+    private Boolean isLoaned;
     private String coverUrl;
     @ManyToOne(cascade= CascadeType.PERSIST)
     @JoinColumn(name = "author_id")
