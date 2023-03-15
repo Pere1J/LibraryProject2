@@ -35,4 +35,12 @@ public class BookService {
         book.setAuthor(author);
         return this.bookRepository.save(book);
     }
+
+    public void deleteById(Long id) {
+         this.bookRepository.deleteById(id);
+    }
+
+    //public Book deleteById(Long id){
+        //return this.bookRepository.deleteById(id).get();
+    //}
 }

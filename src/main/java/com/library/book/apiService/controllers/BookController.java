@@ -2,6 +2,7 @@ package com.library.book.apiService.controllers;
 
 import com.library.book.domain.models.Book;
 import com.library.book.domain.services.BookService;
+import org.apache.coyote.Response;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -35,5 +36,9 @@ public class BookController {
     public ResponseEntity<Book> create(@RequestBody Book book){
         return ResponseEntity.ok(this.bookService.create(book));
 
+    }
+    @DeleteMapping("/books/{id}")
+    public void deleteById(@PathVariable Long id){
+         this.bookService.deleteById(id);
     }
 }
