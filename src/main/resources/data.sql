@@ -72,7 +72,7 @@ INTO
   books
   (title, is_loaned, cover_url, author_id)
 VALUES
-  ('El Quijote', FALSE, 'https://www.popularlibros.com/imagenes.webp_grandes/9788466/978846623664.webp', 1);
+  ('Don Quijote', FALSE, 'https://www.popularlibros.com/imagenes.webp_grandes/9788466/978846623664.webp', 1);
 INSERT
 INTO
     books
