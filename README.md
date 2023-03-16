@@ -13,19 +13,29 @@ Como detalles de "libro" se define:
 - Está prestado (o no)
 - Author
 
-Los "libros" se almacenan en una base de datos.
-
 Se crea una "clase" denominada "Author" para poder almacenarlos de manera separada a los "libros".
 
 Como detalle de "Author" se define con los parámetros:
 - Nombre
 - Nacionalidad
 
+Los "libros" y "autores" se almacenan en una base de datos ===> <span style="color:blue"> *resources / data.sql*</span>
+
 Se crean bases relacionales para que cada "Author" pueda relacionarse a varios libros.
-Relación "Many To One".
+Relación  *Many To One*.
 
 El proyecto se estructura con Spring Boot y se utilizan las librerías
 - JPA
 - Lombok
-- Gradle(como gestor de paquetes)
+- Gradle (como gestor de paquetes)
+
+Se ha procurado tener el máximo de código refactorizado para cumplir con los principios S.O.L.I.D
+
+Se ha creado un *AdviseCintroller* para manejar las excepciones.
+
+Todos estos datos se vincularán al Frontend mediante llamadas realizadas en un proyecto de React.
+
+enlace https://github.com/Menchu02/LibraryProject
+
+
 
