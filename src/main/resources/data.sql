@@ -134,3 +134,9 @@ INTO
     (title, is_loaned, cover_url, author_id)
 VALUES
     ('Ivanhoe', TRUE, 'https://images.cdn2.buscalibre.com/fit-in/360x360/b5/bc/b5bcde278d2b5a97eb4b492c3361abec.jpg', 10);
+INSERT
+    INTO
+        books
+        (title, is_loaned, cover_url, author_id)
+    VALUES
+        ('El talismán', TRUE, 'https://m.media-amazon.com/images/I/71+1Wj2g13L.jpg', 10);
