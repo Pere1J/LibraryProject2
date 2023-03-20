@@ -115,7 +115,7 @@ VALUES
      books
      (title, is_loaned, cover_url, author_id)
  VALUES
-     ('El Capital', TRUE, 'https://pictures.abebooks.com/inventory/md/md30822975656.jpg', 7);
+     ('El Capital', TRUE, 'https://imagessl9.casadellibro.com/a/l/t7/49/9788482647449.jpg', 7);
 INSERT
 INTO
     books
@@ -139,4 +139,4 @@ INSERT
         books
         (title, is_loaned, cover_url, author_id)
     VALUES
-        ('El talismán', TRUE, 'https://m.media-amazon.com/images/I/71+1Wj2g13L.jpg', 10);
+        ('El talismán', TRUE, 'https://m.media-amazon.com/images/I/81a3V+AmS8L.jpg', 10);
