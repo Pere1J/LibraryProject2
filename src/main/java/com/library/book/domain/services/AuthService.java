@@ -5,6 +5,8 @@ import com.library.book.infrastructure.repositories.IAuthorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class AuthService {
     @Autowired
@@ -14,5 +16,9 @@ public class AuthService {
         return this.authorRepository.findById(1L).get();
 
     };
+
+    public List<Author> findAllAuthors(){
+        return authorRepository.findAll();
+    }
 
 }
