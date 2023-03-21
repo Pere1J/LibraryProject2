@@ -43,7 +43,7 @@ public class BookService {
                 .orElseThrow(() -> new RuntimeException("Autor no encontrado"));
 
 
-        var author = this.authService.getAuthAuth();
+       // var author = this.authService.getAuthAuth();
         var book= new Book();
         book.setAuthor(author);
         book.setCoverUrl(request.getCoverUrl());
