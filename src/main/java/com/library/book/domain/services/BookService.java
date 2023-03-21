@@ -1,7 +1,8 @@
 package com.library.book.domain.services;
 
-import com.library.book.domain.models.Author;
+import com.library.book.domain.dtos.BookRequest;
 import com.library.book.domain.models.Book;
+import com.library.book.infrastructure.repositories.IAuthorRepository;
 import com.library.book.infrastructure.repositories.IBookRepository;
 import org.springframework.stereotype.Service;
 
@@ -13,10 +14,12 @@ public class BookService {
 
     private final IBookRepository bookRepository;
     private final AuthService authService;
+    private final IAuthorRepository authorRepository;
 
-    public BookService(IBookRepository bookRepository, AuthService authService) {
+    public BookService(IBookRepository bookRepository, AuthService authService, IAuthorRepository authorRepository) {
         this.bookRepository = bookRepository;
         this.authService = authService;
+        this.authorRepository = authorRepository;
     }
     public List<Book> findAll(){
         return this.bookRepository.findAll();
@@ -33,6 +36,20 @@ public class BookService {
     public Book create(Book book) {
         var author = this.authService.getAuthAuth();
         book.setAuthor(author);
+        return this.bookRepository.save(book);
+    }
+    public Book create(BookRequest request) {
+        var author = authorRepository.findById(request.getAuthorId())
+                .orElseThrow(() -> new RuntimeException("Autor no encontrado"));
+
+
+        var author = this.authService.getAuthAuth();
+        var book= new Book();
+        book.setAuthor(author);
+        book.setCoverUrl(request.getCoverUrl());
+        book.setTitle(request.getTitle());
+        book.setIsLoaned(request.getIsLoaned());
+        //book.setAuthor(author);
         return this.bookRepository.save(book);
     }
 

@@ -1,8 +1,9 @@
 package com.library.book.apiService.controllers;
 
+import com.library.book.domain.dtos.BookRequest;
 import com.library.book.domain.models.Book;
 import com.library.book.domain.services.BookService;
-import org.apache.coyote.Response;
+import com.library.book.infrastructure.repositories.IAuthorRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,9 +16,11 @@ import java.util.List;
 
 public class BookController {
     private final BookService bookService;
+    private final IAuthorRepository authorRepository;
 
-    public BookController(BookService bookService) {
+    public BookController(BookService bookService, IAuthorRepository authorRepository) {
         this.bookService = bookService;
+        this.authorRepository = authorRepository;
     }
 
 
@@ -33,8 +36,9 @@ public class BookController {
 
     }
     @PostMapping("/books")
-    public ResponseEntity<Book> create(@RequestBody Book book){
-        return ResponseEntity.ok(this.bookService.create(book));
+    public ResponseEntity<Book> create(@RequestBody BookRequest request){
+
+        return ResponseEntity.ok(this.bookService.create(request));
 
     }
     @DeleteMapping("/books/{id}")
