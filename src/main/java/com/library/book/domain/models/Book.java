@@ -11,10 +11,12 @@ public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
+
     private Long id;
     private String title;
     private Boolean isLoaned;
     private String coverUrl;
+
     @ManyToOne(cascade= CascadeType.PERSIST)
     @JoinColumn(name = "author_id")
     private Author author;

@@ -4,6 +4,8 @@ import com.library.book.domain.dtos.BookRequest;
 import com.library.book.domain.models.Book;
 import com.library.book.domain.services.BookService;
 import com.library.book.infrastructure.repositories.IAuthorRepository;
+
+import jakarta.persistence.OrderBy;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,8 +27,12 @@ public class BookController {
 
 
     @GetMapping("/books")
+
    ResponseEntity<List<Book>> getAll(){
+
        return ResponseEntity.ok(this.bookService.findAll());
+
+
 
     }
 
