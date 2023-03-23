@@ -52,8 +52,8 @@ public class BookController {
          this.bookService.deleteById(id);
     }
 
-    @GetMapping("/books?isLoaned={isLoaned}")
-    public  ResponseEntity<List<Book>> getAllIsLoaned(@PathVariable Boolean isLoaned){
-        return  ResponseEntity.ok(this.bookService.getAllIsLoaned(isLoaned));
+    @GetMapping("/books/isLoaned")
+    public  ResponseEntity<List<Book>> getAllIsLoaned(){
+        return  ResponseEntity.ok(this.bookService.getAllIsLoaned());
     }
 }
