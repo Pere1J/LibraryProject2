@@ -64,7 +64,7 @@ public class BookService {
         //return this.bookRepository.deleteById(id).get();
     //}
 
-    public List<Book> getAllIsLoaned(Boolean isLoaned){
-         return this.bookLoanedRepository.findAll();
+    public List<Book> getAllIsLoaned(){
+         return this.bookRepository.findByIsLoanedFalseOrderByTitleAsc();
     }
 }
