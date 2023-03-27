@@ -24,9 +24,10 @@ public class BookService {
         this.authorRepository = authorRepository;
         this.bookLoanedRepository = bookLoanedRepository;
     }
-    public List<Book> findAll(){
-        return this.bookRepository.findAll();
+    public List<Book> findAll(){return this.bookRepository.findAll();
     }
+
+
 
     public Book getById(Long id) {
         //return this.bookRepository.findById(id).get();
@@ -67,4 +68,21 @@ public class BookService {
     public List<Book> getAllIsLoaned(){
          return this.bookRepository.findByIsLoanedFalseOrderByTitleAsc();
     }
+
+
+    public void editIsLoaned(long id){
+
+       //obtenemos el book
+        Book bookToEdit = this.bookRepository.findById(id).orElseThrow(()->new RuntimeException("book not found"));
+        //if (bookToEdit.getIsLoaned()) {
+           // bookToEdit.setIsLoaned(false);
+        //}else
+        //{bookToEdit.setIsLoaned(true);}
+
+
+        bookToEdit.setIsLoaned(!bookToEdit.getIsLoaned());
+
+        this.bookRepository.save(bookToEdit);
+
+         }
 }

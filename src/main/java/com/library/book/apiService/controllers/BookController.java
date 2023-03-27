@@ -56,4 +56,7 @@ public class BookController {
     public  ResponseEntity<List<Book>> getAllIsLoaned(){
         return  ResponseEntity.ok(this.bookService.getAllIsLoaned());
     }
+
+    @PutMapping("/books/{id}")
+    public void editIsLoaned(@PathVariable Long id){this.bookService.editIsLoaned(id);}
 }

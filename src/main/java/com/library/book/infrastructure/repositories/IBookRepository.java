@@ -11,4 +11,5 @@ public interface IBookRepository extends JpaRepository<Book, Long> {
     List<Book> findByIsLoanedFalseOrderByTitleAsc();
 
 
+
 }
