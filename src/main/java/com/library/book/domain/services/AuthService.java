@@ -21,4 +21,7 @@ public class AuthService {
         return authorRepository.findAll();
     }
 
+    public Author create(Author author) {
+        return this.authorRepository.save(author);
+    }
 }

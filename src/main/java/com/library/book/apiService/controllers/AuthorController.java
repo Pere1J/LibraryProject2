@@ -2,10 +2,8 @@ package com.library.book.apiService.controllers;
 
 import com.library.book.domain.models.Author;
 import com.library.book.domain.services.AuthService;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,4 +22,10 @@ public class AuthorController {
     public List<Author> findAllAuthors(){
         return authService.findAllAuthors();
     }
+
+    @PostMapping ("/newAuthor")
+    public ResponseEntity<Author> create(@RequestBody Author author){ return ResponseEntity.ok(
+            this.authService.create(author));
+    }
+
 }
