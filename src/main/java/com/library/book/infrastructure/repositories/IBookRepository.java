@@ -10,6 +10,10 @@ import java.util.List;
 public interface IBookRepository extends JpaRepository<Book, Long> {
     List<Book> findByIsLoanedFalseOrderByTitleAsc();
 
+    List<Book> findByTitleContainingIgnoreCase(String title);
+
+
+
 
 
 }

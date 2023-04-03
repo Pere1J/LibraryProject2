@@ -26,15 +26,30 @@ public class BookController {
     }
 
 
-    @GetMapping("/books")
+   /* @GetMapping("/books")
 
    ResponseEntity<List<Book>> getAll(){
 
        return ResponseEntity.ok(this.bookService.findAll());
 
+    }*/
+    /////////////opción filter ////////////////
 
+    @GetMapping("/books")
+    public ResponseEntity<List<Book>> getAll(@RequestParam(name = "title", required = false) String title) {
 
+        List<Book> books = null;
+
+        if (title != null) {
+            books = bookService.findByTitleContainingIgnoreCase(title);
+        } else {
+            books = bookService.findAll();
+        }
+
+        return ResponseEntity.ok(books);
     }
+    ///////////////fin filter /////////////////////////
+
 
     @GetMapping("/books/{id}")
     public ResponseEntity<Book> getById(@PathVariable Long id){

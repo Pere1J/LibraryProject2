@@ -86,5 +86,11 @@ public class BookService {
 
          }
 
+    ///implementación del filter ////////////////
+public List<Book> findByTitleContainingIgnoreCase(String title){
+        return bookRepository.findByTitleContainingIgnoreCase(title);
+}
+
+    //// fin filter ////////////
 
 }
