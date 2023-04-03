@@ -14,13 +14,13 @@ import java.util.List;
 public class BookService {
 
     private final IBookRepository bookRepository;
-    private final AuthService authService;
+    private final AuthorService authorService;
     private final IAuthorRepository authorRepository;
     private final IBookLoanedRepository bookLoanedRepository;
 
-    public BookService(IBookRepository bookRepository, AuthService authService, IAuthorRepository authorRepository, IBookLoanedRepository bookLoanedRepository) {
+    public BookService(IBookRepository bookRepository, AuthorService authorService, IAuthorRepository authorRepository, IBookLoanedRepository bookLoanedRepository) {
         this.bookRepository = bookRepository;
-        this.authService = authService;
+        this.authorService = authorService;
         this.authorRepository = authorRepository;
         this.bookLoanedRepository = bookLoanedRepository;
     }
@@ -37,11 +37,11 @@ public class BookService {
     return bookOptional.get();
     }
 
-    public Book create(Book book) {
+    /*public Book create(Book book) {
         var author = this.authService.getAuthAuth();
         book.setAuthor(author);
         return this.bookRepository.save(book);
-    }
+    }*/
     public Book create(BookRequest request) {
         var author = authorRepository.findById(request.getAuthorId())
                 .orElseThrow(() -> new RuntimeException("Autor no encontrado"));
@@ -85,4 +85,6 @@ public class BookService {
         this.bookRepository.save(bookToEdit);
 
          }
+
+
 }

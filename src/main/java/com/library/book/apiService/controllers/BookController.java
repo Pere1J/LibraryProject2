@@ -59,4 +59,7 @@ public class BookController {
 
     @PutMapping("/books/{id}")
     public void editIsLoaned(@PathVariable Long id){this.bookService.editIsLoaned(id);}
+
+
+
 }

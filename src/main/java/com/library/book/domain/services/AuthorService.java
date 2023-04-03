@@ -8,14 +8,14 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class AuthService {
+public class AuthorService {
     @Autowired
     private IAuthorRepository authorRepository;
 
-    Author getAuthAuth(){
-        return this.authorRepository.findById(1L).get();
+    //Author getAuthAuth(){
+      //  return this.authorRepository.findById(1L).get();
 
-    };
+    //};
 
     public List<Author> findAllAuthors(){
         return authorRepository.findAll();
