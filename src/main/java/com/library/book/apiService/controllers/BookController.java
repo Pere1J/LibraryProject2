@@ -9,6 +9,8 @@ import jakarta.persistence.OrderBy;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 @RestController
@@ -27,24 +29,25 @@ public class BookController {
 
 
    /* @GetMapping("/books")
-
    ResponseEntity<List<Book>> getAll(){
-
        return ResponseEntity.ok(this.bookService.findAll());
-
     }*/
+
+
     /////////////opción filter ////////////////
 
     @GetMapping("/books")
     public ResponseEntity<List<Book>> getAll(@RequestParam(name = "title", required = false) String title) {
 
-        List<Book> books = null;
+        List<Book> books;
 
         if (title != null) {
             books = bookService.findByTitleContainingIgnoreCase(title);
         } else {
             books = bookService.findAll();
         }
+        //List ordenada alfabéticamente
+        Collections.sort(books, Comparator.comparing(Book::getTitle));
 
         return ResponseEntity.ok(books);
     }
