@@ -40,7 +40,8 @@ public class SecurityConfiguration {
               .ignoringRequestMatchers(toH2Console())
               .disable()
               .authorizeHttpRequests()
-              .requestMatchers("/api/v1/auth/**", "/**")
+              //a continuación se indican las págs q no necesitan autorización
+              .requestMatchers("/books/**", "/**")
               .permitAll()
 
               .requestMatchers(new AntPathRequestMatcher("/h2-console/**"))
