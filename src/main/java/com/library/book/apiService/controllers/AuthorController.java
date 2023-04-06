@@ -3,6 +3,7 @@ package com.library.book.apiService.controllers;
 import com.library.book.domain.models.Author;
 import com.library.book.domain.services.AuthorService;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collections;
@@ -34,6 +35,8 @@ import java.util.List;
         //fin lista alf./////////
 
     @PostMapping ("/newAuthor")
+    //----> añadimos la necesidad de usuario autorizado
+    @PreAuthorize("hasAuthority('USER')")
     public ResponseEntity<Author> create(@RequestBody Author author){ return ResponseEntity.ok(
             this.authorService.create(author));
     }

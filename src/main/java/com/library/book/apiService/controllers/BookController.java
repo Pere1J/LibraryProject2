@@ -7,6 +7,7 @@ import com.library.book.infrastructure.repositories.IAuthorRepository;
 
 import jakarta.persistence.OrderBy;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collections;
@@ -34,7 +35,7 @@ public class BookController {
     }*/
 
 
-    /////////////opción filter ////////////////
+    /////////////opción filter V V V V
 
     @GetMapping("/books")
     public ResponseEntity<List<Book>> getAll(@RequestParam(name = "title", required = false) String title) {
@@ -60,12 +61,16 @@ public class BookController {
 
     }
     @PostMapping("/books")
+    //----> añadimos la necesidad de usuario autorizado
+    @PreAuthorize("hasAuthority('USER')")
     public ResponseEntity<Book> create(@RequestBody BookRequest request){
 
         return ResponseEntity.ok(this.bookService.create(request));
 
     }
     @DeleteMapping("/books/{id}")
+    //----> añadimos la necesidad de usuario autorizado
+    @PreAuthorize("hasAuthority('USER')")
     public void deleteById(@PathVariable Long id){
          this.bookService.deleteById(id);
     }
@@ -76,6 +81,8 @@ public class BookController {
     }
 
     @PutMapping("/books/{id}")
+    //----> añadimos la necesidad de usuario autorizado
+    @PreAuthorize("hasAuthority('USER')")
     public void editIsLoaned(@PathVariable Long id){this.bookService.editIsLoaned(id);}
 
 

@@ -23,6 +23,7 @@ public class AuthenticationService {
   private final AuthenticationManager authenticationManager;
 
   public AuthenticationResponse register(RegisterRequest request) {
+    if(repository.findByEmail(request.getEmail()).isPresent()){return null;}
     var user = User.builder()
         .firstname(request.getFirstname())
         .lastname(request.getLastname())
